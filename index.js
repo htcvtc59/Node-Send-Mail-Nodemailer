@@ -11,20 +11,15 @@ var server = http.createServer(app);
 server.listen(process.env.PORT || 3000);
 // console.log('http://localhost:3000');
 var transporter = nodemailer.createTransport({
-    "aliases": [
-        "Google Mail"
-    ],
-    "domains": [
-        "gmail.com",
-        "googlemail.com"
-    ],
-    "host": 'smtp.gmail.com',
-    "auth": {
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
         user: 'osxunixl@gmail.com',
         pass: 'Osxunix97'
     },
-    "port": 465,
-    "secure": true
+    logger: false,
+    debug: false 
 });
 transporter.use('compile', hbs({
     viewPath: 'views',
