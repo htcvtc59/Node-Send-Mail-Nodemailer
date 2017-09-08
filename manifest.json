@@ -1,0 +1,7 @@
+{
+    "name": "Mail",
+    "short_name": "mail",
+    "start_url": "./views/form.ejs",
+    "display": "standalone",
+    "orientation": "portrait"
+}
