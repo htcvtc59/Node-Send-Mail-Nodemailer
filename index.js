@@ -11,14 +11,20 @@ var server = http.createServer(app);
 server.listen(process.env.PORT || 3000);
 // console.log('http://localhost:3000');
 var transporter = nodemailer.createTransport({
+    aliases: [
+        "Google Mail"
+    ],
+    domains: [
+        "gmail.com",
+        "googlemail.com"
+    ],
     host: 'smtp.gmail.com',
     auth: {
         user: 'osxunixl@gmail.com',
         pass: 'Osxunix97'
     },
-    service: 'gmail',
-    port: 587,
-    secure: false
+    port: 465,
+    secure: true
 });
 transporter.use('compile', hbs({
     viewPath: 'views',
@@ -44,7 +50,7 @@ app.post('/sendmail', urlencodeParser, function (req, res) {
         }
     },
         function (err, response) {
-            if (err) { 
+            if (err) {
                 res.json('Thất bại');
                 res.redirect('/');
             } else {
